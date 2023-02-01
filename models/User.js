@@ -19,7 +19,8 @@ class User {
     }
 
     save(callback){
-        connection.query('INSERT INTO user SET first_name = ?, last_name = ?, email = ?, phone = ?, comments = ?', [first_name, last_name, email, phone, comments],
+        connection.query('INSERT INTO user SET first_name = ?, last_name = ?, email = ?, phone = ?, comments = ?', 
+        [this.first_name, this.last_name, this.email, this.phone, this.comments],
         (err, rows) => {
             if (!err) {
                 console.log('Added user: \n', rows);
@@ -30,7 +31,8 @@ class User {
     }
 
     update(callback){
-        connection.query('UPDATE user SET first_name = ?, last_name = ?, email = ?, phone = ?, comments = ? WHERE id = ?', [first_name, last_name, email, phone, comments, id],
+        connection.query('UPDATE user SET first_name = ?, last_name = ?, email = ?, phone = ?, comments = ? WHERE id = ?', 
+        [this.first_name, this.last_name, this.email, this.phone, this.comments, this.id],
         (err, rows) => {
             if (!err) {
                 console.log('Updated user: \n', rows);

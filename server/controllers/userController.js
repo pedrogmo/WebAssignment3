@@ -43,7 +43,7 @@ exports.update = (req, res) => {
 
   let user = new User(req.params.id, first_name, last_name, email, phone, comments);
   user.update(rows => {
-    User.findById(req.params.id, callback => {
+    User.findById(req.params.id, result => {
       res.render('edit-user', { result, alert: `${first_name} has been updated.` });
     });
   });
