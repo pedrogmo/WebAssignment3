@@ -1,5 +1,7 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+const path = require('path');
+const engine = require('ejs-blocks');
 //const bodyParser = require('body-parser'); // No longer Required
 //const mysql = require('mysql'); // Not required -> moved to userController
 
@@ -21,6 +23,8 @@ app.use(express.json()); // New
 app.use(express.static('public'));
 
 // Templating Engine
+app.set('views', path.join(__dirname, 'views'));
+app.engine('ejs', engine);
 app.set('view engine', 'ejs');
 
 // You don't need the connection here as we have it in userController
