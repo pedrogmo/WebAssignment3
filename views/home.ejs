@@ -5,7 +5,7 @@
 <body>
   <%- include("shared/navigation"); %>
   <div class="container pt-5 pb-5">
-    <% if (removedUser) { %>
+    <% if (locals.removedUser) { %>
       <div class="alert alert-success alert-dismissible fade show" role="alert">
         User has been removed.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
