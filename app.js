@@ -1,7 +1,7 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
-const engine = require('ejs-blocks');
+const engine = require('ejs');
 //const bodyParser = require('body-parser'); // No longer Required
 //const mysql = require('mysql'); // Not required -> moved to userController
 

@@ -1,51 +1,59 @@
-<% layout('layouts/main') %>
-<% block('content') %>
+<!DOCTYPE html>
+<html lang="en">
 
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">View User</li>
-  </ol>
-</nav>
-
-<div class="view-user p-5">
-  <% rows.forEach(function(row){ %>
-    <div class="row mb-5">
-      <div class="col text-center">
-        <h3><%= row.first_name %> <%= row.last_name %></h3>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">First Name</th>
-              <th scope="col">Last Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Phone</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"><%= row.first_name %></th>
-              <td><%= row.last_name %></td>
-              <td><%= row.email %></td>
-              <td><%= row.phone %></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="row">
-        <div class="col">
-          <b>Comments</b>
+<%- include("shared/header"); %>
+<body>
+  <%- include("shared/navigation"); %>
+  <div class="container pt-5 pb-5">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">View User</li>
+      </ol>
+    </nav>
+    
+    <div class="view-user p-5">
+      <% rows.forEach(function(row){ %>
+        <div class="row mb-5">
+          <div class="col text-center">
+            <h3><%= row.first_name %> <%= row.last_name %></h3>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <%= row.comments %>
+        <div class="row">
+          <div class="col">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Phone</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><%= row.first_name %></th>
+                  <td><%= row.last_name %></td>
+                  <td><%= row.email %></td>
+                  <td><%= row.phone %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="row">
+            <div class="col">
+              <b>Comments</b>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <%= row.comments %>
+            </div>
+          </div>
         </div>
-      </div>
+      <% }); %>
     </div>
-  <% }); %>
-</div>
+  </div>
+</body>
+<%- include("shared/scripts"); %>
+</html>

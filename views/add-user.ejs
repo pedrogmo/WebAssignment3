@@ -1,21 +1,28 @@
-<% layout('layouts/main') %>
-<% block('content') %>
+<!DOCTYPE html>
+<html lang="en">
 
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">New User</li>
-  </ol>
-</nav>
-
-<% if (alert) { %>
-  <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <%= alert %>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<%- include("shared/header"); %>
+<body>
+  <%- include("shared/navigation"); %>
+  <div class="container pt-5 pb-5">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">New User</li>
+      </ol>
+    </nav>
+    
+    <% if (alert) { %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <%= alert %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% } %>
+    
+    <form class="row g-3 needs-validation" method="POST" action="/adduser" novalidate>
+      <%- include('partials/user-form'); %>
+    </form>
   </div>
-<% } %>
-
-<form class="row g-3 needs-validation" method="POST" action="/adduser" novalidate>
-  <%- include('partials/user-form'); %>
-</form>
-
+</body>
+<%- include("shared/scripts"); %>
+</html>
