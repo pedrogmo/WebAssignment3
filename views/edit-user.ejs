@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("shared/header"); %>
+<body>
+  <%- include("shared/navigation"); %>
+  <div class="container pt-5 pb-5">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Edit User</li>
+      </ol>
+    </nav>
+    
+    <% if (locals.alert) { %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <%= locals.alert %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% } %>
+    
+    <% rows.forEach(function(row){ %>
+      <form class="row g-3 needs-validation" method="POST" action="/edituser/<%= row.id %>" novalidate> 
+        <%- include('partials/user-form', { user: row }); %>
+      </form>
+    <% }); %>
+  </div>
+</body>
+<%- include("shared/scripts"); %>
+</html>
