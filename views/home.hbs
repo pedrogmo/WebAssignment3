@@ -38,7 +38,9 @@
         <a href="/viewuser/{{this.id}}" type="button" class="btn btn-light btn-small"><i class="bi bi-eye"></i> View</a>
         <a href="/edituser/{{this.id}}" type="button" class="btn btn-light btn-small"><i class="bi bi-pencil"></i>
           Edit</a>
-        <a href="/{{this.id}}" type="button" class="btn btn-light btn-small"><i class="bi bi-person-x"></i> Delete</a>
+        <a href="/delete/{{this.id}}" type="button" class="btn btn-light btn-small"><i class="bi bi-person-x"></i> Delete</a>
+        <a href="/activate/{{this.id}}" type="button" class="btn btn-light btn-small">Activate</a>
+        <a href="/deactivate/{{this.id}}" type="button" class="btn btn-light btn-small"> Deactivate</a>
       </td>
     </tr>
     {{/each}}

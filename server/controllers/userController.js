@@ -2,7 +2,7 @@ const User = require('../../models/user.js');
 
 // View all users
 exports.view = (req, res) => {
-  User.fetchAllActive(rows => {
+  User.fetchAll(rows => {
     let removedUser = req.query.removed;
     res.render('home', { rows, removedUser });
   });
@@ -51,9 +51,25 @@ exports.update = (req, res) => {
 
 // Delete user, by deactivating him
 exports.delete = (req, res) => {
-  User.deactivate(req.params.id, rows => {
-    let removedUser = encodeURIComponent('User successeflly removed.');
+  User.setStatus(req.params.id, 'deleted', rows => {
+    let removedUser = encodeURIComponent('User successfully removed.');
     res.redirect('/?removed=' + removedUser);
+  });
+}
+
+// Activate user, setting status to activated
+exports.activate = (req, res) => {
+  User.setStatus(req.params.id, 'active', rows => {
+    let user = encodeURIComponent('User successfully activated.');
+    res.redirect('/?active=' + user);
+  });
+}
+
+// Deactivate user, i.e. set his status to none again
+exports.deactivate = (req, res) => {
+  User.setStatus(req.params.id, 'none', rows => {
+    let user = encodeURIComponent('User successfully deactivated.');
+    res.redirect('/?deactivated=' + user);
   });
 }
 

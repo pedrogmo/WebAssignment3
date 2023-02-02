@@ -42,8 +42,8 @@ class User {
         });
     }
 
-    static deactivate(id, callback){
-        connection.query('UPDATE user SET status = ? WHERE id = ?', ['removed', id],
+    static setStatus(id, status, callback){
+        connection.query('UPDATE user SET status = ? WHERE id = ?', [status, id],
         (err, rows) => {
             if (!err) {
                 console.log('Deactivated user: \n', rows);
@@ -53,8 +53,8 @@ class User {
         });
     }
 
-    static fetchAllActive(callback){
-        connection.query('SELECT * FROM user WHERE status = "active"',
+    static fetchAll(callback){
+        connection.query('SELECT * FROM user WHERE status <> "deleted"',
             (err, rows) => {
                 if (!err) {
                     console.log('All active users: \n', rows);
