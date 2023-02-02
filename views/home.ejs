@@ -35,7 +35,7 @@
       <tbody>
     
         <% rows.forEach(function(row){ %>
-          <tr>
+          <tr style="<%= row.status === 'active' ? 'background-color: rgb(98, 194, 98);' : ''%>">
             <th scope="row"><%= row.id %></th>
             <td><%= row.first_name %></td>
             <td><%= row.last_name %></td>
@@ -46,6 +46,11 @@
               <a href="/edituser/<%= row.id %>" type="button" class="btn btn-light btn-small"><i class="bi bi-pencil"></i>
                 Edit</a>
               <a href="/delete/<%= row.id %>" type="button" class="btn btn-light btn-small"><i class="bi bi-person-x"></i> Delete</a>
+              <% if (row.status === 'none') { %>
+                <a href="/activate/<%= row.id %>" type="button" class="btn btn-light btn-small"><i class="bi bi-check-circle"></i> Activate</a>
+              <% } else if (row.status === 'active') { %>
+                <a href="/deactivate/<%= row.id %>" type="button" class="btn btn-light btn-small"><i class="bi bi-x-circle"></i> Deactivate</a>
+              <% } %>
             </td>
           </tr>
         <% }); %>

@@ -17,7 +17,7 @@ exports.find = (req, res) => {
 };
 
 exports.form = (req, res) => {
-  res.render('add-user');
+  res.render('add-user', {user : new User(0, "","","","","")});
 }
 
 // Add new user
@@ -26,7 +26,7 @@ exports.create = (req, res) => {
   const user = new User(-1, first_name, last_name, email, phone, comments);
 
   user.save(rows => {
-    res.render('add-user', { alert: 'User added successfully.' });
+    res.render('add-user', {alert: 'User added successfully.', user : user});
   });
 };
 
